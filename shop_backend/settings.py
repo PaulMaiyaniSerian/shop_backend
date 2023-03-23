@@ -14,31 +14,31 @@ from pathlib import Path
 from datetime import timedelta
 
 # sentry configs
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
+# import sentry_sdk
+# from sentry_sdk.integrations.django import DjangoIntegration
 
-sentry_sdk.init(
-    dsn="https://e747ca3cd233451b95a2dee1c094dea9@o4504401592909824.ingest.sentry.io/4504401595662336",
-    integrations=[DjangoIntegration()],
+# sentry_sdk.init(
+#     dsn="https://e747ca3cd233451b95a2dee1c094dea9@o4504401592909824.ingest.sentry.io/4504401595662336",
+#     integrations=[DjangoIntegration()],
 
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production,
-    traces_sample_rate=1.0,
+#     # Set traces_sample_rate to 1.0 to capture 100%
+#     # of transactions for performance monitoring.
+#     # We recommend adjusting this value in production,
+#     traces_sample_rate=1.0,
 
-    # If you wish to associate users to errors (assuming you are using
-    # django.contrib.auth) you may enable sending PII data.
-    send_default_pii=True,
+#     # If you wish to associate users to errors (assuming you are using
+#     # django.contrib.auth) you may enable sending PII data.
+#     send_default_pii=True,
 
-    # By default the SDK will try to use the SENTRY_RELEASE
-    # environment variable, or infer a git commit
-    # SHA as release, however you may want to set
-    # something more human-readable.
-    # release="myapp@1.0.0",
-    _experiments={
-    "profiles_sample_rate": 1.0,
-  }
-)
+#     # By default the SDK will try to use the SENTRY_RELEASE
+#     # environment variable, or infer a git commit
+#     # SHA as release, however you may want to set
+#     # something more human-readable.
+#     # release="myapp@1.0.0",
+#     _experiments={
+#     "profiles_sample_rate": 1.0,
+#   }
+# )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -53,7 +53,7 @@ SECRET_KEY = 'django-insecure-boo)46-get&4d*&zf9ebcf64%j+t@infze)$d13rtdh-(4u=z_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "535c-196-110-41-101.in.ngrok.io"]
 
 
 # Application definition
@@ -72,10 +72,11 @@ INSTALLED_APPS = [
     # documentation
     'drf_yasg',
     # profiler
-    'silk',
+    # 'silk',
     # apps
     'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
+    'payments.apps.PaymentsConfig',
 
 ]
 
@@ -103,7 +104,7 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
-    'silk.middleware.SilkyMiddleware',
+    # 'silk.middleware.SilkyMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

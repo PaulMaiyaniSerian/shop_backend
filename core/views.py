@@ -438,7 +438,7 @@ class UpdateCartItem(generics.GenericAPIView):
             try:
                 cartItem = CartItem.objects.get(product=product, shopping_session=shopping_session)
                 cartItem.quantity = qty
-                # cartItem.total = product.price * cartItem.quantity
+                cartItem.total = product.price * cartItem.quantity
                 cartItem.save()
                 print("cart item updated")
 
